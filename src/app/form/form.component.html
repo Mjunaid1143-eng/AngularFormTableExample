@@ -1,0 +1,113 @@
+<!--//---------Solution 1 -----------
+<form #formData="ngForm" (ngSubmit)="submitForm(formData)">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" ngModel required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" ngModel required>
+
+  
+
+  <button type="submit">Submit</button>
+</form>
+//---------Solution 1 ------------->
+
+<h2>Child Component</h2>
+<div class="d-flex justify-content-between">
+  <form (ngSubmit)="submitForm()">
+    <!--First Name-->
+    <div class="row">
+      <div class="col-md-7">
+        <div class="card shadow-effect">
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label" for="firstName">First Name:</label>
+              <input
+                class="form-control"
+                type="text"
+                id="firstName"
+                [(ngModel)]="firstName"
+                name="firstName"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Last Name-->
+    <div class="row">
+      <div class="col-md-7">
+        <div class="card shadow-effect">
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label" for="lastName">Last Name:</label>
+              <input
+                class="form-control"
+                type="text"
+                id="lastName"
+                [(ngModel)]="lastName"
+                name="lastName"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!---->
+    <div class="row">
+      <div class="col-md-7">
+        <div class="card shadow-effect">
+          <div class="card-body">
+            <div class="form-group custom-width">
+              <angular-editor
+                class="form-control"
+                [placeholder]="'Enter text here...'"
+                name="editorContent"
+                [(ngModel)]="editorContent"
+              ></angular-editor>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!---->
+    <div class="row">
+      <div class="col-md-7">
+        <div class="card shadow-effect">
+          <div class="card-body">
+            <div class="form-group">
+              <ng-multiselect-dropdown
+                class="form-control"
+                [placeholder]="'Select Multiple Options'"
+                [settings]="dropdownSettings"
+                [data]="dropdownList"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+              >
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-7">
+        <div class="card shadow-effect">
+          <div class="card-body">
+            <div class="form-group">
+              <button
+                class="btn btn-sm btn-danger btn-theme-custom d-flex"
+                type="submit"
+              >
+                Submit Form
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

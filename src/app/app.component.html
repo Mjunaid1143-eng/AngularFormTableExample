@@ -1,0 +1,73 @@
+<h1>Parent Component</h1>
+<app-form (formSubmitted)="onFormSubmitted($event)"></app-form>
+<h2>Submitted Data:</h2>
+<div class="align-self-end" *ngFor="let data of submittedData">
+  <h3>{{ data.firstName }} {{ data.lastName }}</h3>
+  <p>Selected Dropdown Values:</p>
+  <ul>
+    <li *ngFor="let value of data.selected">
+      {{ value.item_text }}
+    </li>
+  </ul>
+  <p [innerHTML]="data.editorContent">
+    Editor Content: {{ data.editorContent }}
+  </p>
+</div>
+
+<!--
+<table class="table">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Data</th>
+    <th>Options Name</th>
+  </tr>
+  <tr *ngIf="submittedData.length > 0">
+    <p *ngFor="let data of submittedData">
+      <td>{{ data.firstName }}</td>
+      <td>{{ data.lastName }}</td>
+      <td>{{ data.dropDownValues?.item_text }}</td>
+
+      <td [innerHTML]="data.editorContent">{{ data.editorContent }}</td>
+    </p>
+  </tr>
+
+<table>
+  <tr *ngFor="let data of submittedData">
+    <td>{{ data.firstName }}</td>
+    <td>{{ data.lastName }}</td>
+    <td>{{ data.editorContent }}</td>
+    <td *ngFor="let value of data.dropDownValues">
+      <span *ngFor="let value of data.dropDownValues; let last = last"
+        >{{ value }}{{ last ? "" : ", " }}</span
+      >
+    </td>
+  </tr>
+</table> 
+<div *ngIf="submittedData.length > 0">
+  <ul *ngFor="let data of submittedData">
+    <li>{{ data.firstName }}</li>
+    <li>{{ data.lastName }}</li>
+    <li [innerHTML]="data.editorContent">{{ data.editorContent }}</li>
+    <li *ngFor="let dropdownItem of data.dropDownValues">
+      {{ dropdownItem.item_text }}
+    </li>
+  </ul>
+</div>-->
+<!--  
+<tbody>
+  <th *ngIf="submittedData.length > 0">
+    <tr *ngFor="let data of submittedData">
+      <td>{{ data.firstName }}</td>
+
+      <td>{{ data.lastName }}</td>
+      <td [innerHTML]="data.editorContent">{{ data.editorContent }}</td>
+      <td>
+        <span *ngFor="let dropdownItem of data.dropDownValues">{{
+          dropdownItem.join(",")
+        }}</span>
+      </td>
+    </tr>
+  </th>
+</tbody>
+  -->
